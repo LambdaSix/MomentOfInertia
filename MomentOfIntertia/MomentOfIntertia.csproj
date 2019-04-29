@@ -36,6 +36,12 @@
     <Reference Include="Assembly-CSharp, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Defiant_Zombie.KSP.Skeleton.Assembly-CSharp.1.6.1\lib\Assembly-CSharp.dll</HintPath>
     </Reference>
+    <Reference Include="kOS">
+      <HintPath>..\packages\kOS.1.1.7.0\kOS.dll</HintPath>
+    </Reference>
+    <Reference Include="kOS.Safe">
+      <HintPath>..\packages\kOS.1.1.7.0\kOS.Safe.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -54,6 +60,7 @@
   <ItemGroup>
     <Compile Include="InertiaTensor.cs" />
     <Compile Include="InertiaTensorExtensions.cs" />
+    <Compile Include="KOSAddon.cs" />
     <Compile Include="MomentOfInertiaModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
