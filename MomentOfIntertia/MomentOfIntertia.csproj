@@ -54,7 +54,7 @@
   <ItemGroup>
     <Compile Include="InertiaTensor.cs" />
     <Compile Include="InertiaTensorExtensions.cs" />
-    <Compile Include="MoiInfo.cs" />
+    <Compile Include="MomentOfInertiaModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
