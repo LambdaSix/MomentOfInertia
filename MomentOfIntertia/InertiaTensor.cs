@@ -30,7 +30,9 @@ namespace MomentOfIntertia
         public static Matrix4x4 Compute(Vessel v)
         {
             var inertiaTensor = Matrix4x4.zero;
-            Vector3 com = v.findWorldCenterOfMass();
+
+            // Apparently findWorldCenterOfMass() was deprecated..
+            Vector3 com = v.CoMD;
             Transform vesselTransform = v.GetTransform();
 
             foreach (var part in v.parts)

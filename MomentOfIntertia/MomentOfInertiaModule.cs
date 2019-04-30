@@ -4,8 +4,8 @@ namespace MomentOfIntertia
 {
     public class MomentOfInertiaModule : PartModule
     {
-        [KSPField(guiActive = true, guiName = "Moment of Inertia", guiUnits = "kg-m^2")]
-        public Vector3 MomentOfInertia;
+        [KSPField(guiActive = true, guiName = "Moment of Inertia")]
+        public string MomentOfInertia;
 
         public Vector3 CalculateMomentOfInertia(Vessel v)
         {
@@ -13,21 +13,37 @@ namespace MomentOfIntertia
             return inertiaTensor.Trace();
         }
 
+
+        /// <inheritdoc />
+        public void Start()
+        {
+            var I = CalculateMomentOfInertia(vessel);
+        }
+
         private int ticks = 0;
 
-        public override void OnFixedUpdate()
+        public void FixedUpdate()
         {
-            if (ticks > 100)
+            if (vessel.state == Vessel.State.ACTIVE && vessel.loaded)
             {
-                //Update I
-                var I = CalculateMomentOfInertia(vessel);
-                MomentOfInertia = I;
-                ticks = 0;
+
+                if (ticks >= 100)
+                {
+                    //Update I
+                    var I = CalculateMomentOfInertia(vessel);
+                    MomentOfInertia = FormatI(I);
+                    ticks = 0;
+                }
+                else
+                {
+                    ticks++;
+                }
             }
-            else
-            {
-                ticks++;
-            }
+        }
+
+        public static string FormatI(Vector3 I)
+        {
+            return $"({I.x},{I.y},{I.z})";
         }
     }
 }
